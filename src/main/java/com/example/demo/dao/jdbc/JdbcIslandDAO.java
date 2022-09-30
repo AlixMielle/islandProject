@@ -1,5 +1,6 @@
-package com.example.demo.dao;
+package com.example.demo.dao.jdbc;
 
+import com.example.demo.dao.IslandDAO;
 import com.example.demo.model.Island;
 
 import java.sql.*;
@@ -76,7 +77,7 @@ public class JdbcIslandDAO implements IslandDAO {
         String name = rs.getString("name");
         String pictureUrl = rs.getString("picture_url");
         double surface = rs.getDouble("surface");
-        long inhabitants = rs.getLong("inhabitants");
+        long inhabitants = rs.getLong("inhabitant");
         double latitude = rs.getDouble("latitude");
         double longitude = rs.getDouble("longitude");
         String country = rs.getString("country");
@@ -101,7 +102,7 @@ public class JdbcIslandDAO implements IslandDAO {
     @Override
     public boolean edit(Island island) {
         Connection connection = ConnectionManager.getConnection();
-        String query = "UPDATE island SET name=?, picture_url=?, surface=?, inhabitants=?, latitude=?, longitude=?, country=? WHERE id=?";
+        String query = "UPDATE island SET name=?, picture_url=?, surface=?, inhabitant=?, latitude=?, longitude=?, country=? WHERE id=?";
 
         try (PreparedStatement pst = connection.prepareStatement(query)) {
             pst.setString(1, island.getName());

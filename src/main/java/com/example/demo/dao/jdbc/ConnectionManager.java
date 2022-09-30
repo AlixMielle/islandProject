@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package com.example.demo.dao.jdbc;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,7 +45,7 @@ public final class ConnectionManager {
 
     private static void loadDriver() {
         try {
-            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
         } catch (SQLException e) {
             System.err.println("Driver Mysql introuvable");
         }

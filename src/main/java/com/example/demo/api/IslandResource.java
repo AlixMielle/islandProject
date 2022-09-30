@@ -2,7 +2,7 @@ package com.example.demo.api;
 
 import com.example.demo.dao.DaoFactory;
 import com.example.demo.dao.IslandDAO;
-import com.example.demo.dao.MemoryIslandDAO;
+import com.example.demo.dao.memory.MemoryIslandDAO;
 import com.example.demo.model.Island;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
