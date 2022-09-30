@@ -14,27 +14,19 @@
 
 <div class="container mt-4">
 
-    <h1>Islands :</h1>
+    <h1>Countries :</h1>
 
     <div class="row">
-        <c:forEach items="${islands}" var="island">
-
+        <c:forEach items="${countries}" var="country">
             <div class="col-lg-4 mb-3 d-flex align-items-stretch">
                 <div class="card">
-                    <img src="${island.pictureUrl}" class="card-img-top embed-responsive-item" alt="${island.name}">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">${island.name}</h5>
-                            <%--                        <p class="card-text mb-4">xx</p>--%>
-                    </div>
+                    <h5 class="card-title">${country.name}</h5>
                     <div class="card-footer d-flex justify-content-end">
-
-                        <a href="${pageContext.request.contextPath}/details?id=${island.id}"
+                        <a href="${pageContext.request.contextPath}/detail-country?id=${country.id}"
                            class="btn btn-success me-2">Details</a>
-
-                        <a href="${pageContext.request.contextPath}/edit?id=${island.id}" class="btn btn-primary me-2">Edit</a>
-
-                        <form action="${pageContext.request.contextPath}/delete-island" method="post" class="m-0">
-                            <input hidden name="idIsland" value="${island.id}">
+                        <a href="${pageContext.request.contextPath}/edit-country?id=${country.id}" class="btn btn-primary me-2">Edit</a>
+                        <form action="${pageContext.request.contextPath}/delete-country" method="post" class="m-0">
+                            <input hidden name="idCountry" value="${country.id}">
                             <button class="btn btn-secondary" type="submit">Delete</button>
                         </form>
                     </div>
