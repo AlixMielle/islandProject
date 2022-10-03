@@ -38,7 +38,7 @@
             <div class="mb-3">
                 <label for="inhabitants" class="form-label">Inhabitants</label>
                 <input id="inhabitants" type="number" name="inhabitants" class="form-control" required
-                       value="${island.inhabitants}">
+                       value="${island.inhabitant}">
             </div>
 
             <div class="mb-3">
@@ -55,7 +55,9 @@
 
             <div class="mb-3">
                 <label for="country" class="form-label">Country</label>
-                <input id="country" type="text" name="country" class="form-control" required value="${island.country}">
+                <c:forEach items="${islands}" var="island">
+                <input id="country" type="text" name="country" class="form-control" required value="${island.countries}">
+                </c:forEach>
             </div>
 
             <div class="d-flex justify-content-end">

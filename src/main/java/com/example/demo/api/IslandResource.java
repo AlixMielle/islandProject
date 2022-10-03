@@ -1,9 +1,9 @@
 package com.example.demo.api;
 
+import com.example.demo.Entity.Island;
 import com.example.demo.dao.DaoFactory;
 import com.example.demo.dao.IslandDAO;
 import com.example.demo.dao.memory.MemoryIslandDAO;
-import com.example.demo.model.Island;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
@@ -51,7 +51,7 @@ public class IslandResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(Island dto, @Context UriInfo uriInfo) {
         Island createdIsland = new Island(dto.getId(), dto.getName(), dto.getPictureUrl(), dto.getSurface(),
-                dto.getInhabitants(), dto.getLatitude(), dto.getLongitude(), dto.getCountry());
+                dto.getInhabitant(), dto.getLatitude(), dto.getLongitude(), dto.getCountries());
 
         islandDAO.create(createdIsland);
 
@@ -64,19 +64,19 @@ public class IslandResource {
     }
 
 
-    @PUT
+    /*@PUT
     @Path("/{islandId}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(@PathParam("islandId") long idParam, Island islandDto) {
         Optional<Island> optionalIsland = islandDAO.findById(idParam);
         if (optionalIsland.isPresent()) {
-            new MemoryIslandDAO().edit(new Island(idParam, islandDto.getName(), islandDto.getPictureUrl(), 0, 0, 0, 0, ""));
+            new MemoryIslandDAO().edit(new Island(idParam, islandDto.getName(), islandDto.getPictureUrl(), 0, 0, 0, 0, islandDto.getCountries()));
             return getAll();
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-    }
+    }*/
 
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)

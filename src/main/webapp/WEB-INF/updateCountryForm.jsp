@@ -15,7 +15,6 @@
   <h1>Edit Country</h1>
 
   <div class="row">
-
     <form action="${pageContext.request.contextPath}/edit-country" method="POST">
       <input hidden name="id" value="${country.id}">
       <div class="mb-3">

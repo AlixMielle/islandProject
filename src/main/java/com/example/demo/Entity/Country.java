@@ -1,9 +1,8 @@
 package com.example.demo.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Collection;
 
 @Entity
 public class Country {
@@ -15,8 +14,19 @@ public class Country {
     @Column(name="name")
     private String name;
 
+
+    @ManyToMany
+    @JoinTable(name="country_island",
+            joinColumns=
+            @JoinColumn(name="island_id", referencedColumnName="id"),
+            inverseJoinColumns=
+            @JoinColumn(name="country-id", referencedColumnName="id"))
+
+    private Collection<Island> islands;
+
     public Country() {
     }
+
 
     public Country(String name) {
         this.name = name;

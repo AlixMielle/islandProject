@@ -2,7 +2,6 @@ package com.example.demo.servlet;
 
 import com.example.demo.Entity.Country;
 import com.example.demo.dao.DaoFactory;
-import com.example.demo.model.Island;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

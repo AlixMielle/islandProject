@@ -15,14 +15,17 @@ public class EditCountryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String idStr = req.getParameter("id");
+        long id = Long.parseLong(idStr);
 
-        Optional<Country> country = DaoFactory.getCountryDAO().findById(Long.parseLong(idStr));
-        if (country.isPresent()) {
-            req.setAttribute("country", country.get());
-            req.getRequestDispatcher("/WEB-INF/updateCountryForm.jsp").forward(req, resp);
-        } else {
-            resp.sendRedirect(req.getContextPath() + "/countries");
-        }
+        Optional<Country> country = DaoFactory.getCountryDAO().findById(id);
+            if (country.isPresent()) {
+                req.setAttribute("country", country.get());
+                req.getRequestDispatcher("/WEB-INF/updateCountryForm.jsp").forward(req, resp);
+            } else {
+                resp.sendRedirect(req.getContextPath() + "/countries");
+            }
+
+        req.getRequestDispatcher("/WEB-INF/updateCountryForm.jsp").forward(req,resp);
     }
 
     @Override

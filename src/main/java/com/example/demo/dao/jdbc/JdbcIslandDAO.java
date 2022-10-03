@@ -1,7 +1,7 @@
 package com.example.demo.dao.jdbc;
 
+import com.example.demo.Entity.Island;
 import com.example.demo.dao.IslandDAO;
-import com.example.demo.model.Island;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -41,10 +41,10 @@ public class JdbcIslandDAO implements IslandDAO {
             pst.setString(1, island.getName());
             pst.setString(2, island.getPictureUrl());
             pst.setDouble(3, island.getSurface());
-            pst.setDouble(4, island.getInhabitants());
+            pst.setDouble(4, island.getInhabitant());
             pst.setDouble(5, island.getLatitude());
             pst.setDouble(6, island.getLongitude());
-            pst.setString(7, island.getCountry());
+            pst.setString(7, String.valueOf(island.getCountries()));
             return pst.execute();
 
         } catch (SQLException e) {
@@ -77,11 +77,11 @@ public class JdbcIslandDAO implements IslandDAO {
         String name = rs.getString("name");
         String pictureUrl = rs.getString("picture_url");
         double surface = rs.getDouble("surface");
-        long inhabitants = rs.getLong("inhabitant");
+        double inhabitants = rs.getLong("inhabitant");
         double latitude = rs.getDouble("latitude");
         double longitude = rs.getDouble("longitude");
-        String country = rs.getString("country");
-        return new Island(id, name, pictureUrl, surface, inhabitants, latitude, longitude, country);
+        String countries = rs.getString("countries");
+        return new Island(id, name, pictureUrl, surface, inhabitants, latitude, longitude, countries);
     }
 
     @Override
@@ -108,10 +108,10 @@ public class JdbcIslandDAO implements IslandDAO {
             pst.setString(1, island.getName());
             pst.setString(2, island.getPictureUrl());
             pst.setDouble(3, island.getSurface());
-            pst.setDouble(4, island.getInhabitants());
+            pst.setDouble(4, island.getInhabitant());
             pst.setDouble(5, island.getLatitude());
             pst.setDouble(6, island.getLongitude());
-            pst.setString(7, island.getCountry());
+            pst.setString(7, String.valueOf(island.getCountries()));
             pst.setLong(8, island.getId());
 
             return pst.execute();

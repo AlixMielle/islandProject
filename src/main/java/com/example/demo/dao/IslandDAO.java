@@ -1,6 +1,6 @@
 package com.example.demo.dao;
 
-import com.example.demo.model.Island;
+import com.example.demo.Entity.Island;
 
 import java.util.List;
 import java.util.Optional;

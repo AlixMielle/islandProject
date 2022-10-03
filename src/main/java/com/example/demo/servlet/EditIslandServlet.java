@@ -1,7 +1,7 @@
 package com.example.demo.servlet;
 
+import com.example.demo.Entity.Island;
 import com.example.demo.dao.DaoFactory;
-import com.example.demo.model.Island;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -45,7 +45,7 @@ public class EditIslandServlet extends HttpServlet {
                 name,
                 pictureUrl,
                 Double.parseDouble(surface),
-                Long.parseLong(inhabitants),
+                Double.parseDouble(inhabitants),
                 Double.parseDouble(latitude),
                 Double.parseDouble(longitude),
                 country));

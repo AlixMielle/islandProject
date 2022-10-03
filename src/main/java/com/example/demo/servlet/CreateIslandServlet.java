@@ -1,7 +1,7 @@
 package com.example.demo.servlet;
 
+import com.example.demo.Entity.Island;
 import com.example.demo.dao.DaoFactory;
-import com.example.demo.model.Island;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -31,11 +31,11 @@ public class CreateIslandServlet extends HttpServlet {
         String longitude = req.getParameter("longitude");
         String country = req.getParameter("country");
 
-        DaoFactory.getIslandDAO().create(new Island(
+        DaoFactory.getIslandDAO().create(new Island(0,
                 name,
                 pictureUrl,
                 Double.parseDouble(surface),
-                Long.parseLong(inhabitants),
+                Double.parseDouble(inhabitants),
                 Double.parseDouble(latitude),
                 Double.parseDouble(longitude),
                 country));

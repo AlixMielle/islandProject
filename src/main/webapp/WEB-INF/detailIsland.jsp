@@ -26,10 +26,12 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Surface : ${island.surface}</li>
-                    <li class="list-group-item">Inhabitants : ${island.inhabitants}</li>
+                    <li class="list-group-item">Inhabitants : ${island.inhabitant}</li>
                     <li class="list-group-item">Latitude : ${island.latitude}</li>
                     <li class="list-group-item">Longitude : ${island.longitude}</li>
-                    <li class="list-group-item">Country : ${island.country}</li>
+                    <c:forEach items="${islands}" var="island">
+                        <li class="list-group-item">Country : ${island.countries}</li>
+                    </c:forEach>
                 </ul>
 
                 <%--                <div class="card-body p-0">--%>

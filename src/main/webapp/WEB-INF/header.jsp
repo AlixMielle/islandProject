@@ -13,7 +13,9 @@
                 <li><a href="${pageContext.request.contextPath}/islands" class="nav-link px-2 text-secondary">Home</a>
                 </li>
                 <li><a href="${pageContext.request.contextPath}/islands/add"
-                       class="nav-link px-2 text-secondary">Add</a></li>
+                       class="nav-link px-2 text-secondary">Add island</a></li>
+                <li><a href="${pageContext.request.contextPath}/addCountry"
+                       class="nav-link px-2 text-secondary">Add Country</a></li>
             </ul>
 
             <c:if test="${isMenu}">

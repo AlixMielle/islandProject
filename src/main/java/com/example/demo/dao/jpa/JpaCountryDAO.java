@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.Optional;
 
 public class JpaCountryDAO implements CountryDAO {
-    EntityManagerFactory emf = EMFManager.getEMF();
-    EntityManager em = emf.createEntityManager();
 
     @Override
     public List<Country> findAll() {
         List<Country> countries = null;
+        EntityManagerFactory emf = EMFManager.getEMF();
+        EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
         try {
             et.begin();
@@ -33,6 +33,8 @@ public class JpaCountryDAO implements CountryDAO {
 
     @Override
     public boolean create(Country country) {
+        EntityManagerFactory emf = EMFManager.getEMF();
+        EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
         try {
             et.begin();
@@ -50,23 +52,27 @@ public class JpaCountryDAO implements CountryDAO {
 
     @Override
     public Optional<Country> findById(long idParam) {
+        EntityManagerFactory emf = EMFManager.getEMF();
+        EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
+        Country country = null;
         try {
             et.begin();
-            Country country = em.find(Country.class, idParam);
+            country = em.find(Country.class, idParam);
             et.commit();
-            return Optional.ofNullable(country);
         } catch (RuntimeException re) {
             if (et.isActive())
                 et.rollback();
         } finally {
             em.close();
         }
-        return Optional.empty();
+        return Optional.ofNullable(country);
     }
 
     @Override
     public boolean delete(long id) {
+        EntityManagerFactory emf = EMFManager.getEMF();
+        EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
         try {
             et.begin();
@@ -85,6 +91,8 @@ public class JpaCountryDAO implements CountryDAO {
 
     @Override
     public boolean edit(Country countryToEdit) {
+        EntityManagerFactory emf = EMFManager.getEMF();
+        EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
         try {
             et.begin();

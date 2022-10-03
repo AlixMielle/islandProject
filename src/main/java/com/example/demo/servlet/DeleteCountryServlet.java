@@ -13,9 +13,11 @@ public class DeleteCountryServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String idCountryStr = req.getParameter("idCountry");
-
-        DaoFactory.getCountryDAO().delete(Long.parseLong(idCountryStr));
-
+        try {
+            DaoFactory.getCountryDAO().delete(Long.parseLong(idCountryStr));
+        } catch (NumberFormatException e){
+            //todo
+        }
         resp.sendRedirect(req.getContextPath() + "/countries");
     }
 }
